@@ -13,7 +13,7 @@ static const std::string BACKGROUND_COLOR_NEUTRAL = "#ffffff";
 static const std::string BACKGROUND_COLOR_PASSED = "#ccffcc";
 static const std::string BACKGROUND_COLOR_FAILED = "#ffcccc";
 
-static const auto twoDigitsFormat = "%02d";
+static const auto twoDigitsFormat = "%02ld";
 
 static bool timerRunning;
 static std::chrono::steady_clock::time_point currentCycleStartTime;
@@ -84,7 +84,7 @@ int BabystepsTimer::exec(int argc, char * argv[]) {
 }
 
 bool BabystepsTimer::eventFilter(QObject * obj, QEvent * event) {
-  dragWindow(obj, event);
+  return dragWindow(obj, event);
 }
 
 std::string BabystepsTimer::getRemainingTimeCaption(long elapsedTime) {
