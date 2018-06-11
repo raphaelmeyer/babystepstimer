@@ -3,7 +3,6 @@ cmake_minimum_required(VERSION 3.7)
 find_package(Qt5 COMPONENTS Core Widgets Multimedia REQUIRED)
 find_package(Threads)
 
-set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_AUTOMOC ON)
 
 set(SOURCES
@@ -15,8 +14,9 @@ add_library(babystepstimer-lib ${SOURCES})
 target_link_libraries(babystepstimer-lib
   PUBLIC Qt5::Widgets
   PUBLIC Qt5::Multimedia
-  PRIVATE ${CMAKE_THREAD_LIBS_INIT}
+  PRIVATE Threads::Threads
   )
+target_compile_features(babystepstimer-lib PUBLIC cxx_std_11)
 
 add_executable(babystepstimer src/main.cpp)
 target_link_libraries(babystepstimer
